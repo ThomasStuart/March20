@@ -1,0 +1,59 @@
+#FULL CODE 
+
+# create a variable for lives
+lives = 10
+# the word we're guessing
+word = 'secret'
+
+foundLength = len(word)  # 6 value
+found = 0  # start at 0
+
+lookupTable = []
+
+for i in word:
+    lookupTable.append('F')
+
+# while loop ( lives are greater than 0   )
+while (lives > 0):
+
+    # ask the user for a guess,
+    guess = input("Make a guess, character : ")
+
+    # validate the guess
+    counter = 0
+    i = 0
+    for c in word:
+        if (c == guess):
+            counter = counter + 1
+            lookupTable[i] = 'T'
+        i = i + 1
+
+
+    if (counter > 0):
+        found += counter
+    else:
+        lives = lives - 1
+
+    # display/update the state of the game
+    i = 0
+    for c in word:
+        if (lookupTable[i] == 'F'):
+            print('-')
+        else:
+            print(c)
+        i = i + 1
+
+    # check if the game is over
+    if (found == foundLength):
+        print("WON THE GAME")
+        break
+
+if (lives == 0):
+    print("LOST THE GAME")
+
+
+
+
+
+
+
